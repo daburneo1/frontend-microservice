@@ -81,7 +81,7 @@ function ProductList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchProducts(pagination.page, 10)
+    fetchProducts(pagination.page, 9)
         .then((data) => {
           if (Array.isArray(data)) {
             setProducts(data);

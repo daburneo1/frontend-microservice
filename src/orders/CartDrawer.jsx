@@ -11,9 +11,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CloseIcon from '@mui/icons-material/Close';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from 'react-router-dom';
 
 function CartDrawer({ isOpen, toggleDrawer }) {
-    const { cartItems, updateQuantity, removeFromCart } = useCart();
+    const { cartItems, updateQuantity, removeFromCart, clearCart } = useCart();
+    const navigate = useNavigate();
 
     const handleQuantityChange = (productId, quantity) => {
         if (quantity > 0) {
@@ -30,7 +32,9 @@ function CartDrawer({ isOpen, toggleDrawer }) {
             }))
         };
 
-        const { order: createdOrder } = await addOrder(order);
+        const { order: createdOrder, paymentSession } = await addOrder(order);
+        clearCart();
+        navigate('/order-details', { state: { order: createdOrder, paymentSession } });
     };
 
     return (

@@ -1,9 +1,8 @@
-// src/login/signUp.jsx
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-function SignUp() {
+function SignIn() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -73,4 +72,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default SignIn;

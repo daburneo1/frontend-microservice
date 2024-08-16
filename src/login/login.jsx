@@ -19,6 +19,10 @@ function Login() {
         }
     };
 
+    const handleRegister = () => {
+        navigate('/register');
+    };
+
     return (
         <Container maxWidth="sm" sx={{ mt: 5 }}>
             <Grid container justifyContent="center">
@@ -49,6 +53,9 @@ function Login() {
                                 {error && <Alert severity="error">{error}</Alert>}
                                 <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
                                     Ingresar
+                                </Button>
+                                <Button variant="outlined" color="secondary" fullWidth sx={{ mt: 2 }} onClick={handleRegister}>
+                                    Registrarse
                                 </Button>
                             </form>
                         </CardContent>

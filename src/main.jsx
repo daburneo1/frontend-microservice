@@ -12,13 +12,16 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
 import { HashRouter as Router } from "react-router-dom";
+import {Box} from "@mui/material";
 
 library.add(fas, far, fab);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <Router>
-          <h1>Prueba</h1>
+          <Box style={{marginTop: "50px"}}>
+              <h1>Tienda virtual</h1>
+          </Box>
           <App />
       </Router>
   </StrictMode>,

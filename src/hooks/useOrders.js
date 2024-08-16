@@ -9,7 +9,7 @@ export async function addOrder(order) {
         body: JSON.stringify(order),
     });
 
-    if (!response.ok && response.status !== 201) {
+    if (!response.ok || response.status !== 201) {
         throw new Error('Order failed');
     }
 

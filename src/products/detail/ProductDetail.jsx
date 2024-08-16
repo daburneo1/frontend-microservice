@@ -100,6 +100,12 @@ function ProductDetail() {
     );
   }
 
+  function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', options);
+  }
+
   return (
       <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
@@ -174,20 +180,20 @@ function ProductDetail() {
                 Eliminar
               </button>
 
-              <h4 className="mb-0">Details</h4>
+              <h4 className="mb-0">Detalles</h4>
               <hr/>
               <dl className="row">
-                <dt className="col-sm-4">Code</dt>
+                <dt className="col-sm-4">Código</dt>
                 <dd className="col-sm-8 mb-3">{product.id}</dd>
 
-                <dt className="col-sm-4">State</dt>
-                <dd className="col-sm-8 mb-3">{product.available === true ? "Available" : "Not available"}</dd>
+                <dt className="col-sm-4">Estado</dt>
+                <dd className="col-sm-8 mb-3">{product.available === true ? "Disponible" : "No disponible"}</dd>
 
-                <dt className="col-sm-4">Created Date</dt>
-                <dd className="col-sm-8 mb-3">{product.createdAt}</dd>
+                <dt className="col-sm-4">Fecha de creación</dt>
+                <dd className="col-sm-8 mb-3">{formatDate(product.createdAt)}</dd>
 
-                <dt className="col-sm-4">Updated Date</dt>
-                <dd className="col-sm-8 mb-3">{product.updatedAt}</dd>
+                <dt className="col-sm-4">Fecha de actualización</dt>
+                <dd className="col-sm-8 mb-3">{formatDate(product.updatedAt)}</dd>
 
                 <dt className="col-sm-4">Rating</dt>
                 <dd className="col-sm-8 mb-3">

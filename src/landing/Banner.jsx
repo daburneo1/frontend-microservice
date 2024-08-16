@@ -1,62 +1,87 @@
-import BannerZero from "./banner-0.jpg";
-import BannerOne from "./banner-1.jpg";
-import BannerTwo from "./banner-2.jpg";
+import { useState } from 'react';
+import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import BannerZero from './banner-0.jpg';
+import BannerOne from './banner-1.jpg';
+import BannerTwo from './banner-2.jpg';
 
-function BannerIncidator(props) {
+function BannerIndicator({ index, active, onClick }) {
   return (
-    <button
-      type="button"
-      data-bs-target="#bannerIndicators"
-      data-bs-slide-to={props.index}
-      className={props.active ? "active" : ""}
-      aria-current={props.active}
-    />
+      <Button
+          onClick={() => onClick(index)}
+          sx={{
+            backgroundColor: active ? 'primary.main' : 'grey.500',
+            '&:hover': {
+              backgroundColor: active ? 'primary.dark' : 'grey.700',
+            },
+            width: 12,
+            height: 12,
+            borderRadius: '50%',
+            minWidth: 0,
+            margin: 0.5,
+          }}
+      />
   );
 }
 
-function BannerImage(props) {
+function BannerImage({ image, active }) {
   return (
-    <div
-      className={"carousel-item " + (props.active ? "active" : "")}
-      data-bs-interval="5000"
-    >
-      <div
-        className="ratio"
-        style={{ "--bs-aspect-ratio": "50%", maxHeight: "460px" }}
+      <Box
+          sx={{
+            display: active ? 'block' : 'none',
+            position: 'relative',
+            height: 460,
+            overflow: 'hidden',
+          }}
       >
-        <img
-          className="d-block w-100 h-100 bg-dark cover"
-          alt=""
-          src={props.image}
+        <Box
+            component="img"
+            src={image}
+            alt=""
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
         />
-      </div>
-      <div className="carousel-caption d-none d-lg-block">
-        <h5>Banner Header</h5>
-        <p>Some representative placeholder content for the banner.</p>
-      </div>
-    </div>
+        <Box
+            sx={{
+              position: 'absolute',
+              bottom: 16,
+              left: 16,
+              color: 'white',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              padding: 1,
+              borderRadius: 1,
+            }}
+        >
+          <Typography variant="h5">Tienda Virtual</Typography>
+          <Typography variant="body2">Algunos de nuestros mejores productos.</Typography>
+        </Box>
+      </Box>
   );
 }
 
 function Banner() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const images = [BannerZero, BannerOne, BannerTwo];
+
   return (
-    <div
-      id="bannerIndicators"
-      className="carousel slide"
-      data-bs-ride="carousel"
-      style={{ marginTop: "56px" }}
-    >
-      <div className="carousel-indicators">
-        <BannerIncidator index="0" active={true} />
-        <BannerIncidator index="1" />
-        <BannerIncidator index="2" />
-      </div>
-      <div className="carousel-inner">
-        <BannerImage image={BannerZero} active={true} />
-        <BannerImage image={BannerOne} />
-        <BannerImage image={BannerTwo} />
-      </div>
-    </div>
+      <Container sx={{ marginTop: 7 }}>
+        <Grid container justifyContent="center" spacing={1}>
+          {images.map((_, index) => (
+              <Grid item key={index}>
+                <BannerIndicator
+                    index={index}
+                    active={index === activeIndex}
+                    onClick={setActiveIndex}
+                />
+              </Grid>
+          ))}
+        </Grid>
+        {images.map((image, index) => (
+            <BannerImage key={index} image={image} active={index === activeIndex} />
+        ))}
+      </Container>
   );
 }
 

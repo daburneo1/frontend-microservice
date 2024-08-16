@@ -44,3 +44,35 @@ export async function deleteProductById(id) {
 
     return response.json();
 }
+
+export async function cancelOrder(orderId) {
+    const response = await fetch(`${API}orders/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: 'CANCELLED' }),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to cancel order');
+    }
+
+    return response.json();
+}
+
+export async function addProduct(productData) {
+    const response = await fetch(`${API}products`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to add product');
+    }
+
+    return response.json();
+}
