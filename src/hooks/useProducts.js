@@ -1,4 +1,3 @@
-// src/hooks/useProducts.js
 const API = import.meta.env.VITE_NODE_GATEWAY;
 
 export async function fetchProducts(page, limit) {
@@ -19,7 +18,7 @@ export async function fetchProductById(id) {
 
 export async function updateProductById(id, productData) {
     const response = await fetch(`${API}products/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },

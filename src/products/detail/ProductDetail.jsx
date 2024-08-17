@@ -15,7 +15,6 @@ function ProductDetail() {
   const [editForm, setEditForm] = useState({
     name: "",
     price: "",
-    status: "",
   });
 
   useEffect(() => {
@@ -63,7 +62,14 @@ function ProductDetail() {
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
-    updateProductById(location.pathname.split("/").pop(), editForm)
+    const req = {
+        name: editForm.name,
+        price: editForm.price,
+        // id: Number(location.pathname.split("/").pop())
+
+    }
+
+    updateProductById(location.pathname.split("/").pop(), req)
         .then(() => {
           console.log('Product updated successfully');
           setIsEditPopupOpen(false);
@@ -243,19 +249,6 @@ function ProductDetail() {
                             value={editForm.price}
                             onChange={handleEditFormChange}
                         />
-                      </div>
-                      <div className="mb-3">
-                        <label htmlFor="status" className="form-label">Estado</label>
-                        <select
-                            className="form-control"
-                            id="status"
-                            name="status"
-                            value={editForm.status}
-                            onChange={handleEditFormChange}
-                        >
-                          <option value="disponible">Disponible</option>
-                          <option value="no disponible">No disponible</option>
-                        </select>
                       </div>
                       <button type="submit" className="btn btn-primary">Aceptar</button>
                       <button type="button" className="btn btn-secondary" onClick={handleCancelEdit}>Cancelar</button>

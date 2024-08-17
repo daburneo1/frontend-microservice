@@ -3,7 +3,7 @@ import Header from './template/Header';
 import ProductDetail from './products/detail/ProductDetail';
 import ProductList from './products/ProductList';
 import Landing from './landing/Landing';
-import AddProduct from './products/AddProduct';
+import AddProduct from './products/addProduct.jsx';
 import { AuthProvider } from './context/AuthContext';
 import { Routes, Route } from 'react-router-dom';
 import Login from './login/login';

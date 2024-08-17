@@ -6,13 +6,12 @@ import { addProduct } from '../hooks/useProducts';
 function AddProduct() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addProduct({ name, price, description });
+            await addProduct({ name, price });
             navigate('/products');
         } catch (error) {
             console.error('Failed to add product:', error);
@@ -41,15 +40,6 @@ function AddProduct() {
                     margin="normal"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    required
-                />
-                <TextField
-                    label="Descripción"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
                     required
                 />
                 <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
