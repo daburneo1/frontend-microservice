@@ -1,4 +1,4 @@
-import "/bootstrap-custom.css";
+import "./bootstrap-custom.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { StrictMode } from 'react'
