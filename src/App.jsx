@@ -11,6 +11,7 @@ import SignIn from './login/signUp.jsx';
 import OrderPage from './orders/OrderPage';
 import './App.css';
 import PaymentSuccess from "./orders/PaymentSuccess.jsx";
+import PaymentCancelled from "@/orders/PaymentCancelled.jsx";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/add-product" element={<AddProduct />} />
                     <Route path="/add-product" element={<AddProduct />} />
                     <Route path="/payments/success" element={<PaymentSuccess />} />
+                    <Route path="/payments/cancelled" element={<PaymentCancelled />} />
                     <Route path="/" element={<Landing />} />
                 </Routes>
             </CartProvider>
