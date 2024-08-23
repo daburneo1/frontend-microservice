@@ -10,6 +10,7 @@ import Login from './login/login';
 import SignIn from './login/signUp.jsx';
 import OrderPage from './orders/OrderPage';
 import './App.css';
+import PaymentSuccess from "./orders/PaymentSuccess.jsx";
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
                     <Route path="/register" element={<SignIn />} />
                     <Route path="/order-details" element={<OrderPage />} />
                     <Route path="/add-product" element={<AddProduct />} />
+                    <Route path="/add-product" element={<AddProduct />} />
+                    <Route path="/payments/success" element={<PaymentSuccess />} />
                     <Route path="/" element={<Landing />} />
                 </Routes>
             </CartProvider>
