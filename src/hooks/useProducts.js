@@ -10,6 +10,15 @@ export async function fetchProducts(page, limit) {
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
@@ -20,6 +29,15 @@ export async function fetchProductById(id) {
         return response.data;
     } catch (error) {
         console.error('Error fetching product by ID:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
@@ -34,6 +52,15 @@ export async function updateProductById(id, productData) {
         return response.data;
     } catch (error) {
         console.error('Error updating product by ID:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
@@ -44,6 +71,15 @@ export async function deleteProductById(id) {
         return response.data;
     } catch (error) {
         console.error('Error deleting product by ID:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
@@ -58,6 +94,15 @@ export async function cancelOrder(orderId) {
         return response.data;
     } catch (error) {
         console.error('Error canceling order:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
@@ -72,6 +117,15 @@ export async function addProduct(productData) {
         return response.data;
     } catch (error) {
         console.error('Error adding product:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         throw error;
     }
 }
