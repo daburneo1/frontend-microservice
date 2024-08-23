@@ -16,6 +16,8 @@ export async function fetchProducts(page, limit) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
@@ -35,6 +37,8 @@ export async function fetchProductById(id) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
@@ -58,6 +62,8 @@ export async function updateProductById(id, productData) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
@@ -77,6 +83,8 @@ export async function deleteProductById(id) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
@@ -100,6 +108,8 @@ export async function cancelOrder(orderId) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
@@ -123,6 +133,8 @@ export async function addProduct(productData) {
             console.error('Response headers:', error.response.headers);
         } else if (error.request) {
             console.error('Request data:', error.request);
+            console.error('Request status:', error.request.status);
+            console.error('Request statusText:', error.request.statusText);
         } else {
             console.error('Error message:', error.message);
         }
