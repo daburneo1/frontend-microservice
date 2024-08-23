@@ -12,7 +12,7 @@ export default defineConfig({
     cors: true,
     proxy: {
       '/api': {
-        target: 'http://35.244.182.57',
+        target: 'http://34.36.210.129',
         changeOrigin: true,
         secure: false,
       },
