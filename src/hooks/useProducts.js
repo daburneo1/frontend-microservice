@@ -1,77 +1,47 @@
+import axios from 'axios';
+
 const API = import.meta.env.VITE_NODE_GATEWAY;
 
 export async function fetchProducts(page, limit) {
-    const response = await fetch(`${API}products?page=${page}&limit=${limit}`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch products');
-    }
-    return response.json();
+    const response = await axios.get(`${API}products`, {
+        params: { page, limit }
+    });
+    return response.data;
 }
 
 export async function fetchProductById(id) {
-    const response = await fetch(`${API}products/${id}`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch product');
-    }
-    return response.json();
+    const response = await axios.get(`${API}products/${id}`);
+    return response.data;
 }
 
 export async function updateProductById(id, productData) {
-    const response = await fetch(`${API}products/${id}`, {
-        method: 'PATCH',
+    const response = await axios.patch(`${API}products/${id}`, productData, {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(productData),
     });
-
-    if (!response.ok) {
-        throw new Error('Failed to update product');
-    }
-
-    return response.json();
+    return response.data;
 }
 
 export async function deleteProductById(id) {
-    const response = await fetch(`${API}products/${id}`, {
-        method: 'DELETE',
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to delete product');
-    }
-
-    return response.json();
+    const response = await axios.delete(`${API}products/${id}`);
+    return response.data;
 }
 
 export async function cancelOrder(orderId) {
-    const response = await fetch(`${API}orders/${orderId}`, {
-        method: 'PATCH',
+    const response = await axios.patch(`${API}orders/${orderId}`, { status: 'CANCELLED' }, {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ status: 'CANCELLED' }),
     });
-
-    if (!response.ok) {
-        throw new Error('Failed to cancel order');
-    }
-
-    return response.json();
+    return response.data;
 }
 
 export async function addProduct(productData) {
-    const response = await fetch(`${API}products`, {
-        method: 'POST',
+    const response = await axios.post(`${API}products`, productData, {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(productData),
     });
-
-    if (!response.ok) {
-        throw new Error('Failed to add product');
-    }
-
-    return response.json();
+    return response.data;
 }
